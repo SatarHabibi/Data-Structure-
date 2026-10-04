@@ -1,0 +1,73 @@
+import java.util.LinkedList;
+
+public class singlelist {
+    
+    public static void main(String args[])
+    {
+linkedlist singlelist=new linkedlist();
+singlelist.insertfirst(30);
+singlelist.insertfirst(20);
+singlelist.insertfirst(10);
+singlelist.insertfirst(50);
+singlelist.insert_At_Tail(60);
+
+singlelist.displaylist();
+
+    }
+}
+class Node{
+    public int data;
+    public Node next;
+    public Node(int date)
+    {
+        this.data=date;
+      
+    }
+    public void  display()
+    {
+        System.out.println(data);
+    }
+}
+class linkedlist{
+    Node first;
+    public void insertfirst(int data)
+    {
+
+        Node newnode=new Node(data);
+        
+        
+            newnode.next=first;
+            first=newnode;
+       
+    }
+    public Node deletefirst()
+    {
+        Node temp=first;
+        first=first.next;
+        return temp;
+    }
+    public void displaylist()
+    {
+        Node current=first;
+        while(current!=null)
+        {
+            current.display();
+            current=current.next;
+        }
+    }
+    public void insert_At_Tail(int value){
+      Node newnode = new Node(value);
+      if(first==null){
+        first = newnode;
+      }
+      else{
+        Node temp = first;
+        while(temp.next!=null){
+          temp = temp.next;
+        }
+        temp.next = newnode;
+      }
+    }
+
+
+}
