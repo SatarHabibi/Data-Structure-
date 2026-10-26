@@ -69,5 +69,105 @@ class linkedlist{
       }
     }
 
+    public int find(int data)
+{
+    Node current=first;
+
+    while (current!=null) {
+        if(current.data==data)
+        {
+            return current.data;
+        }
+        current=current.next;
+    }
+    return -1;
+   
+}
+public boolean deletedata(int data)
+{
+    if(first==null)
+    {
+        return false;
+    }
+    if(first.data==data)
+    {
+        first=first.next;
+        return true;
+    }
+    Node current=first;
+   while(current.next!=null)
+   {
+    if(current.next.data==data)
+    {
+        current.next=current.next.next;
+        return true;
+    }
+    current=current.next;
+   }
+ return false;
+}
+
+
+}
+
+public class stack{
+    public static void main(String args[])
+    {
+newstack ourstack=new newstack(10);
+ourstack.push(20);
+ourstack.push(30);
+ourstack.push(50);
+ourstack.push(50);
+
+
+if(ourstack.isempty())
+{
+System.out.println("stack is empty!");
+
+}else{
+System.out.println(ourstack.pop());
+System.out.println(ourstack.pop());
+System.out.println("stack is not empty!");
+}
+
+
+
+
+    }
+}
+
+class newstack{
+int top;
+int size;
+int array[];
+
+newstack(int size)
+{
+array=new int[size];
+top=-1;
+}
+
+public boolean isempty()
+{
+    return (top==-1);
+}
+public boolean isfull()
+{
+    return(top==size-1);
+}
+public void push(int data)
+{
+    array[++top]=data;
+}
+public int pop()
+{
+    return array[top--];
+    
+}
+
+public int peek()
+{
+    return array[top];
+}
 
 }

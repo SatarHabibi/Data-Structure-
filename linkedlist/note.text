@@ -247,3 +247,285 @@ public class SinglyLinkedList{
       }
     }
 }
+
+// double list 
+public class doublelinkedlist{
+
+    public static void main(String []args)
+    {
+        doublelist newlist=new doublelist();
+         newlist.insertfirst(10);
+         newlist.insertfirst(20);
+         newlist.insertlast(40);
+         newlist.insertlast(50);
+    
+        if(newlist.isempty())
+        {
+            System.out.println("list is empty!");
+        }else
+        {
+            System.out.println("list is not empty!");
+            newlist.displayfarword();
+            System.out.println();
+            newlist.displaybackward();
+        }
+    }
+}
+class Node{
+    int data;
+    Node next;
+    Node prev;
+    Node(int data)
+    {
+        this.data=data;
+    }
+    void display()
+    {
+        System.out.print(data+" ");
+    }
+
+}
+class doublelist{
+    Node head;
+    Node tail;
+    boolean isempty()
+    {
+        return (head==null);
+    }
+    public void insertfirst(int data)
+    {
+        Node newnode=new Node(data);
+        if(head==null)
+        {
+            head=tail=newnode;
+        }
+        else
+        {
+             head.prev=newnode;
+            newnode.next=head;
+           
+            head=newnode;
+        }
+    }
+    
+    void insertlast(int data)
+{
+    Node newnode=new Node(data);
+    if(tail==null)
+    {
+        head=tail=newnode;
+    }else{
+        tail.next=newnode;
+        newnode.prev=tail;
+        tail=newnode;
+    }
+}
+void displayfarword()
+{
+    Node temp=head;
+    while (temp!=null) {
+        temp.display();
+        temp=temp.next;
+    }
+}
+
+public void displaybackward()
+{
+    Node temp=tail;
+    while (temp!=null) {
+        temp.display();
+        temp=temp.prev;
+    }
+}
+
+
+
+
+
+
+}
+
+class newstack{
+int size;
+int top;
+int arr[];
+
+
+newstack(int size)
+{
+    this.size=size;
+    arr=new int[size];
+    top=-1;
+}
+
+public boolean isempty()
+{
+    return(top==-1);
+}
+public boolean isfull()
+{
+    return(top==size-1);
+}
+public void push(int data)
+{
+    arr[++top]=data;
+    
+}
+public int pop()
+{
+    return arr[top--];
+}
+public int peek()
+{
+    return arr[top];
+}
+
+}
+/// queue 
+public class dynamicqueue{
+    public static void main(String[] args) {
+        
+        queuelist ourqueue=new queuelist();
+        ourqueue.enqueue(10);
+        ourqueue.enqueue(20);
+        ourqueue.enqueue(30);
+        ourqueue.enqueue(40);
+        ourqueue.display();
+        System.out.println();
+System.out.println(ourqueue.dequeue());
+System.out.println(ourqueue.dequeue());
+System.out.println(ourqueue.dequeue());
+System.out.println(ourqueue.dequeue());
+ourqueue.display();
+        if(ourqueue.isempty())
+        {
+            System.out.println("queue is empty!");
+        }else{
+            System.out.println("queue is not empty!");
+        }
+    }
+}
+class Node{
+    int data;
+    Node next;
+    Node(int data)
+    {
+        this.data=data;
+    }
+    public void display()
+    {
+        System.out.print(data+"  ");
+    }
+}
+class linkedlist{
+    Node rear;
+    Node front;
+    public void insertlast(int data)
+    {
+        Node newnode=new Node(data);
+        if(front==null)
+        {
+            front=rear=newnode;
+        }else
+        {
+            rear.next=newnode;
+            rear=newnode;
+        }
+
+    }
+    public int deletefirst()
+    {
+        Node temp=front;
+        front=front.next;
+        return temp.data;
+    }
+    public boolean isempty()
+    {
+        return(front==null);
+    }
+
+    public void display()
+    {
+        Node temp=front;
+        while (temp!=null) {
+            temp.display();
+            temp=temp.next;
+        }
+    }
+}
+class queuelist{
+linkedlist thelist;
+queuelist()
+{
+    thelist=new linkedlist();
+}
+public void enqueue(int data)
+{
+    thelist.insertlast(data);
+}
+public int dequeue()
+{
+    return thelist.deletefirst();
+}
+public boolean isempty()
+{
+    return thelist.isempty();
+}
+public void display()
+{
+    thelist.display();
+}
+}
+//static queue
+public class staticqueue{
+
+    public void main(String args[])
+    {
+        queue ourqueue=new queue(2);
+        ourqueue.enqueue(10);
+        ourqueue.enqueue(20);
+        if(ourqueue.isfull())
+        {
+            System.out.println("queue is  full!");
+        }else{
+            System.out.println("queue is not full!");
+        }
+       
+
+
+    }
+
+}
+class queue{
+    int rear;
+    int front;
+    int size;
+    int array[];
+    queue(int size)
+    {
+        this.size=size;
+        array=new int[size];
+        rear=-1;
+        front=0;
+    }
+public void enqueue(int data)
+{
+    array[++rear]=data;
+}
+public int dequeue()
+{ 
+    rear--;
+    return array[front++];
+    
+}
+
+public boolean isempty()
+{
+    return(rear==-1);
+}
+public boolean isfull()
+{
+    return(rear==size-1);
+}
+
+}
